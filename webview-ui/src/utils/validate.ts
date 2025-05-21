@@ -83,6 +83,11 @@ export function validateApiConfiguration(apiConfiguration?: ApiConfiguration): s
 					return "You must provide a valid API key or choose a different provider."
 				}
 				break
+			case "aistudio":
+				if (!apiConfiguration.aistudioApiKey || !apiConfiguration.aistudioModelId) {
+					return "You must provide a valid API key or choose a different provider."
+				}
+				break
 			case "ollama":
 				if (!apiConfiguration.ollamaModelId) {
 					return "You must provide a valid model ID."

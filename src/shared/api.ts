@@ -23,6 +23,7 @@ export type ApiProvider =
 	| "asksage"
 	| "xai"
 	| "sambanova"
+	| "aistudio"
 
 export interface ApiHandlerOptions {
 	apiModelId?: string
@@ -87,6 +88,8 @@ export interface ApiHandlerOptions {
 	thinkingBudgetTokens?: number
 	reasoningEffort?: string
 	sambanovaApiKey?: string
+	aistudioApiKey?: string
+	aistudioModelId?: string
 	requestTimeoutMs?: number
 	onRetryAttempt?: (attempt: number, maxRetries: number, delay: number, error: any) => void
 }

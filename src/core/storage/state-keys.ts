@@ -20,6 +20,7 @@ export type SecretKey =
 	| "asksageApiKey"
 	| "xaiApiKey"
 	| "sambanovaApiKey"
+	| "aistudioApiKey"
 
 export type GlobalStateKey =
 	| "apiProvider"
@@ -77,6 +78,7 @@ export type GlobalStateKey =
 	| "requestyModelId"
 	| "requestyModelInfo"
 	| "togetherModelId"
+	| "aistudioModelId"
 	| "mcpMarketplaceCatalog"
 	| "telemetrySetting"
 	| "asksageApiUrl"

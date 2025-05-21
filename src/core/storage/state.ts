@@ -115,6 +115,8 @@ export async function getAllExtensionState(context: vscode.ExtensionContext) {
 		requestyModelInfo,
 		togetherApiKey,
 		togetherModelId,
+		aistudioApiKey,
+		aistudioModelId,
 		qwenApiKey,
 		doubaoApiKey,
 		mistralApiKey,
@@ -202,6 +204,8 @@ export async function getAllExtensionState(context: vscode.ExtensionContext) {
 		getGlobalState(context, "requestyModelInfo") as Promise<ModelInfo | undefined>,
 		getSecret(context, "togetherApiKey") as Promise<string | undefined>,
 		getGlobalState(context, "togetherModelId") as Promise<string | undefined>,
+		getSecret(context, "aistudioApiKey") as Promise<string | undefined>,
+		getGlobalState(context, "aistudioModelId") as Promise<string | undefined>,
 		getSecret(context, "qwenApiKey") as Promise<string | undefined>,
 		getSecret(context, "doubaoApiKey") as Promise<string | undefined>,
 		getSecret(context, "mistralApiKey") as Promise<string | undefined>,
@@ -329,6 +333,8 @@ export async function getAllExtensionState(context: vscode.ExtensionContext) {
 			requestyModelInfo,
 			togetherApiKey,
 			togetherModelId,
+			aistudioApiKey,
+			aistudioModelId,
 			qwenApiKey,
 			qwenApiLine,
 			doubaoApiKey,
@@ -424,6 +430,8 @@ export async function updateApiConfiguration(context: vscode.ExtensionContext, a
 		requestyModelInfo,
 		togetherApiKey,
 		togetherModelId,
+		aistudioApiKey,
+		aistudioModelId,
 		qwenApiKey,
 		doubaoApiKey,
 		mistralApiKey,
@@ -499,6 +507,8 @@ export async function updateApiConfiguration(context: vscode.ExtensionContext, a
 	await updateGlobalState(context, "requestyModelId", requestyModelId)
 	await updateGlobalState(context, "requestyModelInfo", requestyModelInfo)
 	await updateGlobalState(context, "togetherModelId", togetherModelId)
+	await storeSecret(context, "aistudioApiKey", aistudioApiKey)
+	await updateGlobalState(context, "aistudioModelId", aistudioModelId)
 	await storeSecret(context, "asksageApiKey", asksageApiKey)
 	await updateGlobalState(context, "asksageApiUrl", asksageApiUrl)
 	await updateGlobalState(context, "thinkingBudgetTokens", thinkingBudgetTokens)
@@ -534,6 +544,7 @@ export async function resetExtensionState(context: vscode.ExtensionContext) {
 		"asksageApiKey",
 		"xaiApiKey",
 		"sambanovaApiKey",
+		"aistudioApiKey",
 	]
 	for (const key of secretKeys) {
 		await storeSecret(context, key, undefined)

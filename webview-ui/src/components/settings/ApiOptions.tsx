@@ -319,6 +319,7 @@ const ApiOptions = ({
 					<VSCodeOption value="requesty">Requesty</VSCodeOption>
 					<VSCodeOption value="fireworks">Fireworks</VSCodeOption>
 					<VSCodeOption value="together">Together</VSCodeOption>
+					<VSCodeOption value="aistudio">AiStudio</VSCodeOption>
 					<VSCodeOption value="qwen">Alibaba Qwen</VSCodeOption>
 					<VSCodeOption value="doubao">Bytedance Doubao</VSCodeOption>
 					<VSCodeOption value="lmstudio">LM Studio</VSCodeOption>
@@ -1495,6 +1496,26 @@ const ApiOptions = ({
 				</div>
 			)}
 
+			{selectedProvider === "aistudio" && (
+				<div>
+					<VSCodeTextField
+						value={apiConfiguration?.aistudioApiKey || ""}
+						style={{ width: "100%" }}
+						type="password"
+						onInput={handleInputChange("aistudioApiKey")}
+						placeholder="Enter API Key...">
+						<span style={{ fontWeight: 500 }}>API Key</span>
+					</VSCodeTextField>
+					<VSCodeTextField
+						value={apiConfiguration?.aistudioModelId || ""}
+						style={{ width: "100%" }}
+						onInput={handleInputChange("aistudioModelId")}
+						placeholder={"Enter Model ID..."}>
+						<span style={{ fontWeight: 500 }}>Model ID</span>
+					</VSCodeTextField>
+				</div>
+			)}
+
 			{selectedProvider === "vscode-lm" && (
 				<div>
 					<DropdownContainer zIndex={DROPDOWN_Z_INDEX - 2} className="dropdown-container">
@@ -2450,6 +2471,12 @@ export function normalizeApiConfiguration(apiConfiguration?: ApiConfiguration): 
 				selectedProvider: provider,
 				selectedModelId: apiConfiguration?.openRouterModelId || openRouterDefaultModelId,
 				selectedModelInfo: apiConfiguration?.openRouterModelInfo || openRouterDefaultModelInfo,
+			}
+		case "aistudio":
+			return {
+				selectedProvider: provider,
+				selectedModelId: apiConfiguration?.aistudioModelId || "",
+				selectedModelInfo: openAiModelInfoSaneDefaults,
 			}
 		case "openai":
 			return {

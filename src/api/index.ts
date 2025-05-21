@@ -23,6 +23,7 @@ import { FireworksHandler } from "./providers/fireworks"
 import { AskSageHandler } from "./providers/asksage"
 import { XAIHandler } from "./providers/xai"
 import { SambanovaHandler } from "./providers/sambanova"
+import { AiStudioHandler } from "./providers/aistudio"
 
 export interface ApiHandler {
 	createMessage(systemPrompt: string, messages: Anthropic.Messages.MessageParam[]): ApiStream
@@ -63,6 +64,8 @@ export function buildApiHandler(configuration: ApiConfiguration): ApiHandler {
 			return new FireworksHandler(options)
 		case "together":
 			return new TogetherHandler(options)
+		case "aistudio":
+			return new AiStudioHandler(options)
 		case "qwen":
 			return new QwenHandler(options)
 		case "doubao":
